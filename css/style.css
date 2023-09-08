@@ -1,0 +1,234 @@
+@font-face {
+    font-family: 'Tabitha';
+    src: url('/fonts/tabitha.ttf') format('truetype');
+  }
+  
+
+:root {
+    --clr-border-orange: rgba(231,137,110,255);
+    --clr-header-background-orange: #eaaf9e;
+    --clr-font-dark: #21272e;
+    --clr-add-btn-background: #cddcd3;
+    --clr-main-background: #fff4e5;
+    --clr-background-odd: #ffe0b7;
+    --clr-danger: #dc3545;
+    --clr-danger-hover: #c22e3d;
+    --clr-success: #198754;
+    --clr-completed: #19c37d;
+    --clr-edit: #0d6efd;
+    --clr-edit-hover: #0b61e2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-family: 'Open Sans', sans-serif;
+    color: var(--clr-font-dark);
+    background: #cfe8ef;
+}
+
+h3 {
+    padding-bottom: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    width: 100%;
+    background: var(--clr-header-background-orange);
+    border-radius: 6px;
+    text-align: center;
+    padding: 34px 16px;
+
+}
+
+.container {
+    margin: 80px auto;
+    width: clamp(375px, 100%, 800px);
+    border: 8px solid var(--clr-border-orange);
+    border-radius: 16px;
+    background: var(--clr-main-background);
+}
+
+.input-area {
+    display: flex;
+    gap: 12px;
+    padding: 0 26px;
+}
+
+#task-input {
+    min-height: 35px;
+    width: clamp(60px, 80%, 800px);
+    border-radius: 8px;
+    font-size: 18px;
+    padding: 0 16px;
+}
+
+#add-task-btn {
+    min-height: 35px;
+    width: clamp(20px, 25%, 100px);
+    border-radius: 8px;
+    background: var(--clr-add-btn-background);
+    cursor: pointer;
+    /* margin-left: 8px; */
+}
+
+
+ /*** Task Section ***/
+
+
+ .tasks-section {
+    margin: 30px auto;
+    width: clamp(60px, 100%, 800px);
+    /* border: 1px solid black; */
+ }
+
+ .message {
+    font-size: 14px;
+    font-style: italic;
+    text-align: center;
+    color: darkgray;
+    padding-top: 4px;
+ }
+
+ .tasks-section__list {
+    list-style: none;
+ }
+
+ .task {
+    padding: 8px 12px 8px 40px;
+    cursor: pointer;
+ }
+
+ .task:nth-child(odd) {
+    background: var(--clr-background-odd)
+ }
+
+ .task:hover {
+    background: var(--clr-header-background-orange);
+ }
+
+ .task-text {
+    display: inline-block;
+    padding: 8px 0;
+    width: clamp(300px, 68%, 600px);
+ }
+
+ .task.completed {
+    background: #19c37d;
+    border-bottom: 1px solid var(--clr-add-btn-background);
+    transition: 0.5s;
+    color: #fff;
+ }
+
+ .task.completed > :first-child {
+    display: inline-block;
+ }
+
+ .task.completed > :first-child::before {
+    content: '✓ ';
+    padding-right: 20px;
+ }
+
+ .task.completed > :nth-child(2) {
+    text-decoration: line-through;
+ }
+
+ 
+ .task-btn,
+ #save-task-btn {
+    cursor: pointer;
+    float: right;
+    color: #fff;
+    padding: 4px 6px;
+    border-radius: 6px;
+    margin: 2px 8px 0 0;
+    font-size: 14px;
+ }
+
+ .edit-task-btn {
+    background: var(--clr-edit);
+ }
+
+ .edit-task-btn:hover {
+    background: var(--clr-edit-hover);
+ }
+
+ .edit-textarea {
+    width: 100%;
+    padding: 4px;
+    border-radius: 8px;
+    margin: 2px 8px 8px 0;
+    min-height: 70px;
+ }
+
+ .remove-task-btn {
+    background: var(--clr-danger);
+    align-self: flex-end;
+ }
+
+ .add-45px-padding {
+    padding-bottom: 45px;
+  }
+
+ .remove-task-btn:hover {
+    background: var(--clr-danger-hover);
+ }
+
+
+ .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+
+
+
+
+@media (max-width: 799px) {
+    .container {
+        margin-top: 0;
+        border-radius: 0;
+    }
+
+    header {
+        border-radius: 0 0 6px 6px;
+    }
+}
+
+@media (max-width: 610px) {
+    .input-area {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    #task-input {
+        width: clamp(60px, 100%, 800px);
+    }
+
+    .task-text {
+        display: inline-block;
+        width: clamp(60px, 90%, 600px);
+        margin-bottom: 16px;
+    }
+
+    .task-btn,
+    #save-task-btn {
+        float: none;
+        margin-bottom: 16px;
+    }
+
+    .task {
+        padding: 8px 12px 8px 20px;
+    }
+
+
+
+
+}
