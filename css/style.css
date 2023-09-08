@@ -9,7 +9,7 @@
     --clr-border-orange: rgba(231,137,110,255);
     --clr-header-background-orange: #eaaf9e;
     --clr-font-dark: #21272e;
-    --clr-dark-grey: #cfe8ef;
+    --clr-blue-grey: #cfe8ef;
     --clr-add-btn-background: #cddcd3;
     --clr-dark-grey: #a9a9a9;
     --clr-main-background: #fff4e5;
@@ -36,7 +36,7 @@
 body {
     font-family: 'Open Sans', sans-serif;
     color: var(--clr-font-dark);
-    background: var(--clr-dark-grey);
+    background: var(--clr-blue-grey);
 }
 
 h3 {
@@ -233,8 +233,5 @@ header {
     .task {
         padding: 8px 12px 8px 20px;
     }
-
-
-
 
 }

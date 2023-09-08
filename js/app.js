@@ -2,8 +2,6 @@
 
 const taskInput = document.querySelector('#task-input');
 const addTaskBtn = document.querySelector('#add-task-btn');
-// const removeTaskBtn = document.querySelectorAll('.remove-task-btn');
-// const editTaskBtn = document.querySelectorAll('.edit-task-btn');
 const taskSectionList = document.querySelector('.tasks-section__list');
 
 
@@ -160,49 +158,6 @@ function editTask(taskLi) {
 
 
 
-
-
-
-
-
-
-
-
-// Listener that edit a task
-// editTaskBtn.forEach(editTaskBtn => {
-//     taskSectionList.addEventListener('click', (e) => {
-//         // Target the <li> element that holds the clicked-on button
-//         let taskLi = e.target.parentNode;
-//         // Check if the elements that's clicked on is the edit button
-//         if (e.target.classList.contains('edit-task-btn')) {
-//             editTask(taskLi);
-//         }
-//     });
-// });
-
-
-
-// Listener that removes the task from the task-list
-// removeTaskBtn.forEach(removeTaskBtn => {
-//     taskSectionList.addEventListener('click', (e) => {
-//         // Target the <li> element that holds the clicked-on button
-//         let taskLi = e.target.parentNode;
-//         // Check if the elements that's clicked on is the remove button
-//         if (e.target.classList.contains('remove-task-btn')) {
-//             // Remove that <li> element from the list
-//             taskLi.remove();
-
-//             // Save the tasks to the local storage
-//             saveTasksToTheLocalStorage();
-//         }
-//     });
-// });
-
-
-
-
-
-
 /* **********************
  * 
  * 
@@ -285,13 +240,6 @@ function completeTask(e) {
         taskLi = e.target.parentNode;
     }
 
-    // Apply the completed styling
-    // taskLi.style.background = '#19c37d';
-    // taskLi.querySelector('.task-text').style.color = '#fff';
-    // taskLi.style.transition = '1.3s';
-    // taskLi.style.borderBottom = '1px solid #cddcd3';
-    // taskLi.querySelector('.task-text').style.textDecoration = 'line-through';
-    // taskLi.querySelector('.task-text').classList.add('completed');
 
     // toggle the completed classes
     taskLi.classList.toggle('completed');
@@ -310,54 +258,6 @@ taskSectionList.addEventListener('click', (e) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-/* **********************
- * 
- * 
- *  Save The Task To The Local Storage
- * 
- * 
- * **********************/
-
-// function saveTasksToTheLocalStorage() {
-//     const tasksNodeList = document.querySelectorAll('.task');
-
-//     // The returned value is a NodeList so it should be converted in array
-//     // Then, map the text of each list item to the array
-//     const tasksArray = Array.from(tasksNodeList).map((task) => task.querySelector('.task-text').textContent);
-
-//     //Once we have the tasks in array, we can convert it JSON format and save it in the local storage
-//     const tasksJson = JSON.stringify(tasksArray);
-//     localStorage.setItem('tasks', tasksJson);
-// }
-
-
-
-// Load the data from the localStorage
-// function loadDataFromTheLocalStorage() {
-//     if (localStorage.getItem('tasks')) {
-//         // Get the tasks and convert the back into array format
-//         let tasks = JSON.parse(localStorage.getItem('tasks'));
-
-//         // create <li> element with the data
-//         tasks.forEach((textContent) => createTask(textContent));
-//     }
-// }
-
-// // Load the taks from the localStorage on page load
-// document.addEventListener('DOMContentLoaded', () => {
-//     loadDataFromTheLocalStorage();
-// });
 
 
 
@@ -422,7 +322,3 @@ document.addEventListener('DOMContentLoaded', () => {
     taskInput.value = '';
 });
 
-
-
-
-console.log(JSON.parse(localStorage.getItem(`task1_completed`)));
