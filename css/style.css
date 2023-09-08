@@ -5,10 +5,13 @@
   
 
 :root {
+    --clr-white: #fff;
     --clr-border-orange: rgba(231,137,110,255);
     --clr-header-background-orange: #eaaf9e;
     --clr-font-dark: #21272e;
+    --clr-dark-grey: #cfe8ef;
     --clr-add-btn-background: #cddcd3;
+    --clr-dark-grey: #a9a9a9;
     --clr-main-background: #fff4e5;
     --clr-background-odd: #ffe0b7;
     --clr-danger: #dc3545;
@@ -17,6 +20,10 @@
     --clr-completed: #19c37d;
     --clr-edit: #0d6efd;
     --clr-edit-hover: #0b61e2;
+
+    --fs-primary-14px: 0.875rem; /*  14px */
+    --fs-primary-16px: 1rem; /*  16px */
+    --fs-primary-18px: 1.125rem; /*  18px */
 }
 
 * {
@@ -27,10 +34,9 @@
 }
 
 body {
-    /* font-family: Arial, Helvetica, sans-serif; */
     font-family: 'Open Sans', sans-serif;
     color: var(--clr-font-dark);
-    background: #cfe8ef;
+    background: var(--clr-dark-grey);
 }
 
 h3 {
@@ -65,7 +71,7 @@ header {
     min-height: 35px;
     width: clamp(60px, 80%, 800px);
     border-radius: 8px;
-    font-size: 18px;
+    font-size: var(--fs-primary-18px);
     padding: 0 16px;
 }
 
@@ -89,10 +95,10 @@ header {
  }
 
  .message {
-    font-size: 14px;
+    font-size: var(--fs-primary-14px);
     font-style: italic;
     text-align: center;
-    color: darkgray;
+    color: var(--clr-dark-grey);
     padding-top: 4px;
  }
 
@@ -123,7 +129,7 @@ header {
     background: #19c37d;
     border-bottom: 1px solid var(--clr-add-btn-background);
     transition: 0.5s;
-    color: #fff;
+    color: var(--clr-white);
  }
 
  .task.completed > :first-child {
@@ -144,11 +150,11 @@ header {
  #save-task-btn {
     cursor: pointer;
     float: right;
-    color: #fff;
+    color: var(--clr-white);
     padding: 4px 6px;
     border-radius: 6px;
     margin: 2px 8px 0 0;
-    font-size: 14px;
+    font-size: var(--fs-primary-14px);
  }
 
  .edit-task-btn {
