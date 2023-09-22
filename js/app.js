@@ -2,7 +2,7 @@
 
 const taskInput = document.querySelector('#task-input');
 const addTaskBtn = document.querySelector('#add-task-btn');
-const taskSectionList = document.querySelector('.tasks-section__list');
+const taskSectionList = document.querySelector('.tasks-section__list'); // The <ul>
 
 
 
@@ -16,6 +16,16 @@ const taskSectionList = document.querySelector('.tasks-section__list');
 
 // Function that creates the <li> element that will hold the task
 // also set a default value for the completed status
+
+/*
+* This is how a task should look like
+    <li class="task clearfix">
+        <p class="task-text">Hey! I'm a default task. If you click on me, that willl mark me as completed!</p>
+        <button class="task-btn remove-task-btn">Remove</button>
+        <button class="task-btn edit-task-btn">Edit</button>
+    </li>
+*
+*/
 function createTask(textInput, completed = false) {
     // Check if the input is valid before anything else
     const validatedInput = validateInput(textInput);
@@ -94,9 +104,9 @@ function createTask(textInput, completed = false) {
 
 // Listener that add the task to the task-list
 addTaskBtn.addEventListener('click', () => {
-    createTask(taskInput.value);
-    taskInput.value = '';
-    taskInput.focus();
+    createTask(taskInput.value); // Add the task
+    taskInput.value = ''; // Clear the input
+    taskInput.focus(); // Return the focus on the input
 });
 
 // Add event listener that adds a task when Enter is pressed
@@ -131,7 +141,8 @@ function editTask(taskLi) {
     editTextarea.classList.add('edit-textarea');
     editTextarea.value = textParagraph.textContent;
 
-    //Hide the original text and display the input. Also hide the Remove <button>
+    // Hide the paragraph that shows the taks text normaly, as it will be repllace with the textarea
+    // Also hide the Remove <button>, The only button there will be the Save button
     textParagraph.style.display = 'none';
     let removeTaskBtn = taskLi.querySelector('.remove-task-btn');
     removeTaskBtn.style.display = 'none';
@@ -146,11 +157,11 @@ function editTask(taskLi) {
     saveBtn.textContent = 'Save';
     saveBtn.style.background = '#198754';
 
-    // Append the <textarea> element to the tasks list, on top of the button
+    // Append the <textarea> element to the tasks list, on top of the Save button
     taskLi.appendChild(editTextarea);
     taskLi.appendChild(saveBtn);
 
-    // Add padding on edit so the Save button is not close the buttons below
+    // Add padding on edit so the Save button is not so close the buttons below
     taskLi.classList.add('add-45px-padding');
 
 }
@@ -187,26 +198,27 @@ function saveTask(e) {
     // Transfer the text from the texarea to the paragraph
     textParagraph.textContent = textArea.value;
 
-    // Remove the save button and the text area
+    // Remove the save button and the textarea
     saveBtn.remove();
     textArea.remove();
 
 
-    // Show the paragraph and the remove <button>
+    // Show the paragraph and the remove and edit buttons
     textParagraph.style.display = 'inline-block';
     removeTaskBtn.style.display = 'inline-block';
     editBtn.style.display = 'inline-block';
 
-    // Save the tasks to the local storage
+    // Save the tasks to the local storage. We save all the tasks here, this is why the function does not take any arguments
     saveTasksToTheLocalStorage();
 
 
     // Remove the added paddong
     textLi.classList.remove('add-45px-padding');
-}
+} // end of saveTask()
 
 
 // Listener that saves the tasks after an edit
+// The taskSectionList here is the UL element that holds the tasks
 taskSectionList.addEventListener('click', (e) => {
     if (e.target.id === 'save-task-btn') {
         saveTask(e);
@@ -229,27 +241,28 @@ taskSectionList.addEventListener('click', (e) => {
 
 function completeTask(e) {
 
-    // Declare the taskLi and taskP variable
+    // Declare the taskLi variable
     let taskLi;
 
     // Assign the <li> element to it
-    if (e.target.tagName == 'LI') {
+    if (e.target.tagName == 'LI') {  // if the clicked on el is the <li> we assign it directly
         taskLi = e.target;
     }
-    if (e.target.tagName == 'P') {
+    if (e.target.tagName == 'P') {  // if the clicked on el is the text (p), then the <li> is it parent
         taskLi = e.target.parentNode;
     }
 
-
     // toggle the completed classes
+    // Add the complete class on the <li> element's that's clicked on
     taskLi.classList.toggle('completed');
 }
 
-
+// We add the event listener to the <ul> element, so we can listen for clicks on its children
 taskSectionList.addEventListener('click', (e) => {
+    // if the clicked elelemnt is <li> or <p> 
     if (e.target.classList.contains('task') || e.target.classList.contains('task-text')) {
-        completeTask(e);
-        saveTasksToTheLocalStorage();
+        completeTask(e); // complete the taks
+        saveTasksToTheLocalStorage(); // save the taks in the localstorage, with the new completed status
     }
 });
 
@@ -262,34 +275,40 @@ taskSectionList.addEventListener('click', (e) => {
 
 
 
-// Save the tasks with their classes
+// Save the tasks with their completed status ( calass )
 function saveTasksToTheLocalStorage() {
     const tasksNodeList = document.querySelectorAll('.task');
-    //let completedStatus;
 
-    // The returned value is a NodeList so it should be converted in array
+
+    // The returned value is a NodeList so it should be converted in array, in order to conver it in JSON later
     // Then, map the text of each list item to the array
     const tasksArray = Array.from(tasksNodeList).map((task, index) => {
 
-        // How to check for completed class?
+        // Save the tasks and its completes status.
         // Check if the li element has a class of completed
-        // and store it in separate storage array, using its index as a marker
+        // and store it in separate storage entry, using its index as a marker
         let taskText = task.querySelector('.task-text').textContent;
+
+        // Check if the task have a class of completed. The retuned values are:
+        // true if the tasks has it
+        // false if it does not have it
         let completedStatus = task.classList.contains('completed');
 
+        // Here we save the completed status, with the index of the taks and true/false as its value
+        // Example: task0_completed:"false"
         localStorage.setItem(`task${index}_completed`, JSON.stringify(completedStatus));
 
+        // We return the text so it can be added in the tasksArray. It will be added in the same index there as the index if the completed status, so we can be sure they are always synchronized
         return taskText;
     })
 
     //Once we have the tasks in array, we can convert it JSON format and save it in the local storage
     const tasksJson = JSON.stringify(tasksArray);
     localStorage.setItem('tasks', tasksJson);
+} // end of saveTasksToTheLocalStorage()
 
-    //console.log(localStorage);
-}
 
-//console.log(localStorage);
+
 
 
 
@@ -305,11 +324,11 @@ function loadDataFromTheLocalStorage() {
             //createTask(textContent)
 
             // Get the completedStatus
+            // The value of completedStatus here will be either true of false
             const completedStatus = JSON.parse(localStorage.getItem(`task${index}_completed`));
 
+            // Create the task with its completed status
             createTask(textContent, completedStatus);
-
-            //console.log(completedStatus);
         });
     }
 }
