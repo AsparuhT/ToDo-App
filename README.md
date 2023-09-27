@@ -5,7 +5,7 @@ This project is a simple yet powerful To-Do List Application, allowing users to 
 ## Table of Contents
 
 - [Features](#features)
-- [Installation / Download](#installation)
+- [Installation / Download](#installation--download))
 - [Usage](#usage)
 
 
@@ -24,12 +24,12 @@ This project is a simple yet powerful To-Do List Application, allowing users to 
    git clone https://github.com/AsparuhT/ToDo-App.git
    ````
 
-Or just download it as ZIP archive from Code -> Download ZIP
+Or just download it as ZIP archive from **Code -> Download ZIP**
 
 ## Usage
 
 - **Add a Task:** The task input field is automatically focused on page load. The user can type the task description and add it to the list by click the "Add" button or hit the Enter key. The focus will start on the input field so the user can keep adding tasks.
-- **Mark as Completed:** The user can mark or unmark a task as comoleted by clicking on it. If marked as completed it will turn green and show a checkbox mark.
+- **Mark as Completed:** The user can mark or unmark a task as completed by clicking on it. If marked as completed it will turn green and show a checkbox mark.
 - **Edit a Task:** Each task can be edited by clicking its Edit button.
-- **Delete a Task:** Click on the "Delete" button if you want to delete a task.
+- **Delete a Task:** Click on the Delete button if you want to delete a task.
   
