@@ -18,5 +18,9 @@ This project is a simple yet powerful To-Do List Application, allowing users to 
 - **Task Status**: Mark or unmark tasks as completed by clicking on them.
 - **Data Persistence**: Tasks are stored in local storage to prevent data loss upon page reload.
 
-
 ## Installation
+
+1. **Clone the Repository**
+   ````
+   git clone https://github.com/[YourUsername]/todo-list-application.git
+  ````
