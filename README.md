@@ -26,6 +26,9 @@ This project is a simple yet powerful To-Do List Application, allowing users to 
 
 Or just download it as ZIP archive from Code -> Download ZIP
 
+ **Open in Browser**
+ Open in though your prefered text editor(IDE) or simply double-click on the 'index.html' file 
+
 ## Usage
 
 - **Add a Task:** The task input field is automatically focused on page load. The user can type the task description and add it to the list by click the "Add" button or hit the Enter key. The focus will start on the input field so the user can keep adding tasks.
