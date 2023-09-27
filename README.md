@@ -5,7 +5,7 @@ This project is a simple yet powerful To-Do List Application, allowing users to 
 ## Table of Contents
 
 - [Features](#features)
-- [Installation / Download](#installation--download))
+- [Installation / Download](#installation--download)
 - [Usage](#usage)
 
 
