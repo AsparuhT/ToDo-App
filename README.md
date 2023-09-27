@@ -22,6 +22,7 @@ This project is a simple yet powerful To-Do List Application, allowing users to 
  **Clone the Repository**
    ````
    git clone https://github.com/AsparuhT/ToDo-App.git
+   ````
 
 Or just download it as ZIP archive from Code -> Download ZIP
 
